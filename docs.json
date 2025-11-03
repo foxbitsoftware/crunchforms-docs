@@ -4,8 +4,8 @@
   "name": "Crunchforms",
   "colors": {
     "primary": "#264653",
-    "light": "#2A9D8F",
-    "dark": "#fff"
+    "light": "#fff",
+    "dark": "#2A9D8F"
   },
   "favicon": "/favicon.svg",
   "navigation": {
