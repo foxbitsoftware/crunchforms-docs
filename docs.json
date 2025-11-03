@@ -22,19 +22,10 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Advanced Settings",
             "pages": [
               "essentials/settings",
               "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
             ]
           }
         ]
