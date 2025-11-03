@@ -54,14 +54,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Home",
+          "href": "https://crunchforms.com",
+          "icon": "house-blank"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Plans",
+          "href": "https://crunchforms.com/pricing",
+          "icon": "dollar-sign"
         }
       ]
     }
