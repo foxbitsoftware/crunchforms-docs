@@ -1,6 +1,37 @@
 ---
-title: 'Prevent Bots and Spam'
-description: 'Read our guides on how to prevent bots and spam using Cloudflare Turnstile or Honeypot fields'
+title: "Prevent Bots and Spam"
+description: "Read our guides on how to prevent bots and spam using Cloudflare Turnstile or Honeypot fields"
 ---
 
-//recaptcha coming soon
+## Prevent abuse on your form submissions
+
+While not necessary, we recomend implementing some form of bot protection on your forms to reduce spam submissions. Below are some guides on how to implement bot protection using popular methods.
+
+<CardGroup cols={1}>
+    <Card
+        title="Add a Honeypot Field"
+        icon="honey-pot"
+        horizontal
+        href="/advanced/honeypot"
+    >
+        Easy protection agains simple bots using a hidden field
+    </Card>
+
+    <Card
+        title="Validate with Cloudflare Turnstile"
+        icon="cloudflare"
+        horizontal
+        href="/advanced/turnstile"
+    >
+        Advanced bot protectionion using Cloudflare Turnstile
+    </Card>
+
+    <Card
+        title="reCAPTCHA Validation (Coming Soon)"
+        icon="google"
+        horizontal
+        href="/advanced/turnstile"
+    >
+        Advanced bot protectionion using Google reCAPTCHA
+    </Card>
+</CardGroup>
