@@ -28,7 +28,8 @@
               "advanced/honeypot",
               "advanced/turnstile",
               "advanced/environments",
-              "advanced/emails"
+              "advanced/emails",
+              "advanced/whitelabeling"
             ]
           }
         ]
