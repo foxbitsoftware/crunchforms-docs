@@ -32,6 +32,13 @@
               "advanced/emails",
               "advanced/whitelabeling"
             ]
+          },
+          {
+            "group": "Legal",
+            "pages": [
+              "legal/terms",
+              "legal/privacy"
+            ]
           }
         ]
       },
