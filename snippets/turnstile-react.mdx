@@ -1,0 +1,23 @@
+
+```js TurnstileWidget.js
+import Turnstile, { useTurnstile } from "react-turnstile";
+
+function TurnstileWidget({enableSubmitCallback,siteKey,tokenCallback}) {
+  const turnstile = useTurnstile();
+
+  function onTurnstileSuccess(token) {
+        // Callback that passes true to enable submit button once token is generated
+		enableSubmitCallback(true);
+
+		// Pass the token back to the parent component to include in form submission under 'turnstileToken' field or 'cf-turnstile-response' field
+        tokenCallback(token);
+    }
+	
+  	return (
+        <Turnstile
+            sitekey={siteKey}
+            onVerify={(token) => onTurnstileSuccess(token)}
+        />
+    );
+}
+```
