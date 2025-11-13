@@ -1,6 +1,96 @@
 ---
 title: "Using Environments"
-description: ""
+description: "Using multiple formIDs & Environment Variables with Crunchforms"
 ---
 
-//describe advance implementation using ENV and multiple IDs for test forms and production forms
+import NextSteps from '/snippets/next-steps.mdx';
+import Help from '/snippets/help.mdx';
+
+## Introduction
+
+When using Crunchforms, you may want to switch between different form IDs (for example, staging vs production forms) and manage environment-specific configuration. This page describes best practices for:
+
+* Defining and using multiple form IDs
+* Using environment variables to manage differences between environments
+* Example setups for popular stacks (Node.js, Next.js, etc.)
+
+---
+
+## Why Use Environment Variables
+
+Hard-coding your `formID` in your source code can cause the Wrong form being used in production or inefficiencies switching contexts (dev ←→ staging ←→ prod)
+
+Using environment variables lets you:
+
+* Keep environment-specific values outside your codebase
+* Use the same code to support multiple environments
+* Reduce risk of mixing up IDs or endpoints
+
+---
+
+## Recommended Variable Structure
+
+Here’s a suggested set of environment variables for form usage:
+
+``` ENV
+CRUNCHFORMS_FORM_ID={formID}       # The form ID for current environment
+CRUNCHFORMS_BASE_URL=https://crunchforms.com/form/  # (Optional) The Crunchforms endpoint / base URL
+```
+
+## Setting Up for Multiple Environments
+
+### 1. Environment Variable Files
+
+Here’s how you might structure `.env` (for local development) and CI/CD environment variables:
+
+**`.env.development`**
+
+``` ENV
+CRUNCHFORMS_FORM_ID={dev_form_ID} 
+CRUNCHFORMS_BASE_URL=https://crunchforms.com/form/
+```
+
+**`.env.staging`**
+
+``` ENV
+CRUNCHFORMS_FORM_ID={stage_form_ID} 
+CRUNCHFORMS_BASE_URL=https://crunchforms.com/form/
+```
+
+**`.env.production`**
+
+``` ENV
+CRUNCHFORMS_FORM_ID={prod_form_ID} 
+CRUNCHFORMS_BASE_URL=https://crunchforms.com/form/
+```
+
+### 2. Code Sample
+
+```js config/crunchforms.js
+
+const CRUNCHFORMS_FORM_ID    = process.env.CRUNCHFORMS_FORM_ID;
+const CRUNCHFORMS_BASE_URL   = process.env.CRUNCHFORMS_BASE_URL;
+
+if (!CCRUNCHFORMS_BASE_URL || !CRUNCHFORMS_FORM_ID) {
+  throw new Error('Crunchforms configuration is missing. Please set CRUNCHFORMS_BASE_URL and CRUNCHFORMS_FORM_ID.');
+}
+
+async function submitForm(data) {
+  const response = await fetch(`${CRUNCHFORMS_BASE_URL}${CRUNCHFORMS_FORM_ID}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) {
+    throw new Error(`Crunchforms API error: ${response.status}`);
+  }
+  return response.json();
+}
+```
+
+<NextSteps />
+
+<Help />
+
